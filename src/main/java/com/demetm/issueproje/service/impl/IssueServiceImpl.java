@@ -4,7 +4,7 @@ import com.demetm.issueproje.dto.IssueDto;
 import com.demetm.issueproje.entity.Issue;
 import com.demetm.issueproje.repository.IssueRepository;
 import com.demetm.issueproje.service.IssueService;
-import com.demetm.issueproje.util.Tpage;
+import com.demetm.issueproje.util.TPage;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -46,19 +46,25 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public Tpage<IssueDto> getAllPageable(Pageable pageable) {
+    public TPage<IssueDto> getAllPageable(Pageable pageable) {
         Page<Issue> data = issueRepository.findAll(pageable);
-        Tpage page = new Tpage<IssueDto>();
+        TPage page = new TPage<IssueDto>();
         IssueDto[] dtos = modelMapper.map(data.getContent(), IssueDto[].class);
         page.setStat(data, Arrays.asList(dtos));
         return page;
     }
 
     @Override
-    public Boolean delete(IssueDto issue) {
-        return null;
+    public Boolean delete(Long issueId) {
+        issueRepository.deleteById(issueId);
+
+        return true;
     }
 
+    @Override
+    public IssueDto update(Long id, IssueDto project) {
+        return null;
+    }
 
 
 }

@@ -1,25 +1,24 @@
 package com.demetm.issueproje.service;
 
-import com.demetm.issueproje.entity.Issue;
-import com.demetm.issueproje.entity.Project;
-import com.demetm.issueproje.entity.User;
-import org.springframework.data.domain.Page;
+import com.demetm.issueproje.dto.ProjectDto;
+import com.demetm.issueproje.util.TPage;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface ProjectService {
 
-    Project save(Project project);
+    ProjectDto save(ProjectDto project);
 
-    Project getById(Long id);
+    ProjectDto getById(Long id);
 
-    List<Project> getByProjectCode(String projectCode);
+    ProjectDto getByProjectCode(String projectCode);
 
-    List<Project> getByProjectCodeContains(String projectCode);
+    List<ProjectDto> getByProjectCodeContains(String projectCode);
 
-    Page<Project> getAllPageable(Pageable pageable); //sayfa göster
+    TPage<ProjectDto> getAllPageable(Pageable pageable); //sayfa göster
 
-    Boolean delete(Project project);
+    Boolean delete(ProjectDto project);
 
+    ProjectDto update(Long id, ProjectDto project);
 }
