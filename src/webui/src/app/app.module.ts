@@ -6,7 +6,12 @@ import { AppComponent } from './app.component';
 import {IssueModule} from "./pages/issue/issue.module";
 import {ProjectModule} from "./pages/project/project.module";
 import {DashboardModule} from "./pages/dashboard/dashboard.module";
-import {AppLayoutComponent, FooterComponent, HeaderComponent, SidebarComponent} from "../_layout";
+import {AppLayoutComponent} from "./_layout/app-layout/app-layout.component";
+import {FooterComponent} from "./_layout/footer/footer.component";
+import {HeaderComponent} from "./_layout/header/header.component";
+import {SidebarComponent} from "./_layout/sidebar/sidebar.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +26,8 @@ import {AppLayoutComponent, FooterComponent, HeaderComponent, SidebarComponent} 
     AppRoutingModule,
     IssueModule,
     ProjectModule,
-    DashboardModule
+    DashboardModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
