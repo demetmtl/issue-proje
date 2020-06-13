@@ -1,90 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-
   <title>Document</title>
 </head>
+
 <body>
+<aside class="sidebar" [ngClass]="{collapseClass: isActive}">
+  <nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand m-0 py-2 brand-title" href="#">IssueManagement</a>
+    <span></span>
+    <a class="navbar-brand py-2 material-icons toggle-sidebar" (click)="toggleSidebar()">menu</a>
+  </nav>
 
-<div class="container">
-  <div class="col-sm-12 col-md-4 col-lg-2">
-    <div class="dropdown">
-      <button type="button" class="btn-lg   btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-        <span style="font-weight: bolder; font-size:  2.4vh ;"> Sınav Türü </span>
-      </button>
-      <div class="dropdown-menu">
-          <span style="font-weight: bolder; font-size:  2.4vh ;">
-          <a class="dropdown-item" href="#">SBS</a>
-          <a class="dropdown-item" href="#">YGS</a>
-          <a class="dropdown-item" href="#">LYS</a>
-          </span>
-      </div>
-    </div>
-  </div>
+  <nav class="navigation">
+    <ul>
+      <li class="active">
+        <a routerLink="/dashboard"  routerLinkActive="active" >
+          <span class="nav-icon material-icons">public</span>
+          Dashboard
+        </a>
+      </li>
 
-  <div class="col-sm-12 col-md-4 col-lg-2">
-    <div class="dropdown">
-      <button type="button" class="btn-lg btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-        <span style="font-weight: bolder; font-size:  2.4vh ;"> Ders Listesi </span>
-      </button>
-      <div class="dropdown-menu">
-          <span style="font-weight: bolder; font-size:  2.4vh ;">
-          <a class="dropdown-item" href="#">MATEMATIK</a>
-          <a class="dropdown-item" href="#">FIZIK</a>
-          <a class="dropdown-item" href="#">KIMYA</a>
-          </span>
-      </div>
-    </div>
-  </div>
+      <li [ngClass]="{'open': showMenu === 'project'}">
+        <a (click)="addExpandClass('project')" title="Project">
+          <span class="nav-icon material-icons">supervisor_account</span> Project
+          <span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a>
+        <ul class="sub-nav" [ngStyle]="{'display':(showMenu === 'project')?'block':'none'}">
+          <li>
+            <a routerLink="/project"routerLinkActive="active">
+              <span><span class="nav-icon material-icons">list</span> &nbsp;&nbsp;&nbsp;Project List</span>
+            </a>
+          </li>
+        </ul>
+      </li>
 
-  <div class="col-sm-12 col-md-4 col-lg-2">
-    <div class="dropdown">
-      <button type="button" class="btn-lg btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-        <span style="font-weight: bolder; font-size:  2.4vh ;">  Döküman Tipi </span>
-      </button>
-      <div class="dropdown-menu">
-          <span style="font-weight: bolder; font-size:  2.4vh ;">
-          <a class="dropdown-item" href="#">Konu Anlatımı</a>
-          <a class="dropdown-item" href="#">Soru Çözümü</a>
-          </span>
-      </div>
-    </div>
-  </div>
+      <li [ngClass]="{'open': showMenu === 'issue'}">
+        <a (click)="addExpandClass('issue')" title="Issue">
+          <span class="nav-icon material-icons">supervisor_account</span> Issue
+          <span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a>
+        <ul class="sub-nav" [ngStyle]="{'display':(showMenu === 'issue')?'block':'none'}">
+          <li>
+            <a routerLink="/issue"routerLinkActive="active">
+              <span><span class="nav-icon material-icons">list</span> &nbsp;&nbsp;&nbsp;Issue List</span>
+            </a>
+          </li>
+        </ul>
+      </li>
 
-  <div class="col-sm-12 col-md-4 col-lg-2">
-    <div class="dropdown">
-      <button type="button" class="btn-lg btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-        <span style="font-weight: bolder; font-size:  2.4vh ;"> Hoca Listesi</span>
-      </button>
-      <div class="dropdown-menu">
-          <span style="font-weight: bolder; font-size:  2.4vh ;">
-          <a class="dropdown-item" href="#">Furkan Emmezoğlu</a>
-          <a class="dropdown-item" href="#">Çağrı Aygün</a>
-          <a class="dropdown-item" href="#">Burak Al</a>
-          </span>
-      </div>
-    </div>
-  </div>
+    </ul>
 
-  <div class="col-sm-12 col-md-4 col-lg-2">
-    <button type="button" class="btn-lg btn btn-success"> <span style="font-weight: bolder; font-size:  2.4vh ;">Dersleri Listele</span></button>
-  </div>
-  <div class="col-sm-12 col-md-4 col-lg-2">
-    <button type="button" class="btn-lg btn btn-info"> <span style="font-weight: bolder; font-size:  2.4vh ;">Tüm Dersleri Listele</span></button>
-  </div>
-
-</div>
-
-
+  </nav>
+</aside>
 </body>
 </html>
